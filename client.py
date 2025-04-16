@@ -53,9 +53,17 @@ def format_response(response):
 
 def main():
     print("=== Enhanced HTTP Client ===\n")
+    
+    # Get user input
     url, method, headers, body = get_user_input()
-    response = send_request(url, method, headers, body)
-    format_response(response)
+    
+    # Try sending the request and handle invalid URLs
+    try:
+        response = send_request(url, method, headers, body)
+        format_response(response)
+    except requests.exceptions.RequestException as e:
+        print(f"\n❌ Invalid URL or connection error: {e}")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
