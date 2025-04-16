@@ -55,7 +55,8 @@ def format_response(response):
         try:
             # Parse and print JSON response
             parsed_json = response.json()
-            print(json.dumps(parsed_json, indent=2))
+            # Use JSON dump string for parsing
+            print(json.dumps(parsed_json, indent=2)) # 2 spaces per indent
         except json.JSONDecodeError:
             # If parsing fails, just print raw text
             print(response.text)
