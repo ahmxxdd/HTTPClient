@@ -19,6 +19,10 @@ class CustomHandler(BaseHTTPRequestHandler):
             "message": "Request received successfully!"
         }
 
+        print(f"Received {self.command} request for {self.path}")
+        print(f"Headers: {self.headers}")
+        print(f"Body: {body}")
+
         self._set_headers()
         self.wfile.write(json.dumps(response, indent=2).encode('utf-8'))
 
